@@ -236,6 +236,61 @@
             color: #FFFFFF;
         }
 
+        /* --- TERMS OF SERVICE MODAL STYLES --- */
+        #terms-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 50, 0.95); /* Dark blue overlay */
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; 
+        }
+
+        #terms-content {
+            background-color: #002266;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border: 3px solid #FFD700;
+        }
+
+        #terms-content h2 {
+            color: #FF69B4;
+            margin-top: 0;
+        }
+
+        #terms-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        #terms-list li {
+            background-color: #003377;
+            padding: 8px;
+            margin-bottom: 5px;
+            border-left: 5px solid #FFD700;
+        }
+
+        #terms-footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #001155;
+        }
+
+        #real-company-warning {
+            color: #9999CC;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        
         /* --- MOBILE RESPONSIVE STYLES --- */
         @media (max-width: 600px) {
             .top-nav {
@@ -273,11 +328,39 @@
             #products-view h3 {
                 font-size: 1.5em;
             }
+            #terms-content {
+                margin: 20px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <div id="terms-modal">
+        <div id="terms-content">
+            <h2>🦀 Crab Productions™️ Terms of Service</h2>
+            <ul id="terms-list">
+                <li>
+<strong> Crab productions is not responsible for the following: </strong>
+
+</li>
+                <li>Stolen items</li>
+                <li>Missing souls</li>
+                <li>Fatal injuries</li>
+                <li>Death</li>
+                <li>Aftermath of The Die of Death and Time products</li>
+                <li>And pests spontaneously appearing in your house after the purchase of any of our “Exotic” Products.</li>
+            </ul>
+
+            <p style="font-weight: bold; color: #AAAAFF;">If any issues arise please do not sue or contact us.</p>
+            
+            <div id="terms-footer">
+                <button onclick="acceptTerms()">Click below to accept all terms and cookies</button>
+                <p id="real-company-warning">Crab productions is NOT A REAL COMPANY (Yet)</p>
+            </div>
+        </div>
+    </div>
     <div class="top-nav">
         <a href="#" class="logo" onclick="showView('hero-view')">Crab Productions™️</a>
         <div class="nav-links">
@@ -298,7 +381,7 @@
         </div>
 
         <div id="products-view" class="feature-view" style="display:none;">
-            <h3>🦀 Our Stupidly Relatable Products</h3>
+            <h3>🦀 Our "Exotic" Products</h3>
             
             <div class="product-item">
                 <h4>The Human Cloning Machine </h4>
@@ -307,7 +390,45 @@
                 <p><strong>Price:5000$</strong>  </p>
                 <button onclick="alert('Thanks for your muns,Machine will arrive when its released in 3041')">Purchase Now</button>
             </div>
+
+
+
+             <div class="product-item">
+                <h4>The Die of Death </h4>
+                <p> Is your enemy making you angry? shut them up with this! The Die Of Death! This fancy Die when rolled will decide a number for your enemies fate. Requires The die of time(sold separately), Get this for the low price of YOUR SOUL,it probably isnt worth that much anyway! so really were helping you!</p>
+                
+                <p><strong>Price:Your SOUL</strong>  </p>
+                <button onclick="alert('Thanks for your Soul,Die will arrive when I remeber to ship it!')">Purchase Now</button>
+            </div>
+
+
+
+             <div class="product-item">
+                <h4>The Die of Time </h4>
+                <p> You may think that This die lets you control time,But you're wrong!!This is a completely normal 10 sided die,its just required for the die of death! if it rolls under 4,your enemy dies within seconds depending on the number you rolled on the die of death! if it rolled over 4 then they die in hours! a 9 means they die in years and 0 is they dont die!!! For the low price of 3.99$!  </p>
+                
+                <p><strong>Price:3.99$</strong>  </p>
+                <button onclick="alert('Thanks for your purchase,The die of time will replace the nearest 10-sided die closest to you!')">Purchase Now</button>
+            </div>
+
+
+             <div class="product-item">
+                <h4>Totally legit system scan! </h4>
+                <p> Wondering what is hiding in the depths of your files? just use Crab productions FREE System scan to SEE just that! (Totally not a Virus)  </p>
+                
+                <p><strong>Price:Free!!!</strong>  </p>
+                <button onclick="window.location.href='thecrabspilot.github.io/TOTALLYNOTAVIRUS/'">Use now!</button>
+
+            </div>
+
+
         </div>
+
+
+
+
+
+
 
         <div id="subscribe-view" class="feature-view" style="display:none;">
             <h2>🎉 Upgrade to Crab Productions™️+</h2>
@@ -343,6 +464,18 @@
                 
                 <button type="button" onclick="createAccount()">Save Account</button>
             </form>
+
+            <div id="promo-code-section" style="margin-top: 30px;">
+                <h3>💰 Apply Promo Code</h3>
+                <p id="discount-status">Discount Status: None</p>
+                <label for="promo-code-input">Enter Code:</label>
+                <input type="text" id="promo-code-input" placeholder="Code here">
+                <button type="button" onclick="applyPromoCode()">Apply Code</button>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="button" onclick="showTermsModal()">Read Terms of Service Again</button>
+            </div>
         </div>
         
         <div id="subscription-status" style="display:none;"></div>
@@ -361,16 +494,105 @@
     </footer>
 
     <script>
+        // --- Discount Variables ---
+        const VALID_PROMO_CODE = 'ImACoolTeacher';
+        const DISCOUNT_RATE = 0.75; // 75% off
+
         document.addEventListener('DOMContentLoaded', (event) => {
-            // Check for existing account/subscription on load
-            updateAccountInfo();
-            updateSubscriptionStatus();
-            // Default to Home View
-            showView('hero-view'); 
+            // --- INITIAL LOAD CHECK ---
+            const accepted = localStorage.getItem('crab_terms_accepted') === 'true';
+            if (!accepted) {
+                showTermsModal();
+            } else {
+                // If accepted, load the rest of the app normally
+                updateAccountInfo();
+                updateSubscriptionStatus();
+                updateProductPrices(); 
+                showView('hero-view'); 
+            }
         });
+
+        // --- NEW: Terms of Service Modal Logic ---
+        function showTermsModal() {
+            document.getElementById('terms-modal').style.display = 'flex';
+        }
+
+        function acceptTerms() {
+            localStorage.setItem('crab_terms_accepted', 'true');
+            document.getElementById('terms-modal').style.display = 'none';
+            
+            // If the app hasn't fully loaded yet (first time acceptance), initialize here
+            if (localStorage.getItem('crab_username') === null) {
+                updateAccountInfo();
+                updateSubscriptionStatus();
+                updateProductPrices(); 
+                showView('hero-view'); 
+            }
+        }
+
+        // --- Price Calculation Helper ---
+        function formatPrice(price) {
+            // Handle "Your SOUL" and "Free!!!" prices
+            if (typeof price === 'string') return price;
+            return `$${price.toFixed(2)}`;
+        }
+
+        function calculateDiscountedPrice(originalPrice) {
+            const discountActive = localStorage.getItem('crab_discount') === 'active';
+            if (!discountActive) {
+                return originalPrice;
+            }
+
+            // Only apply discount to number prices
+            if (typeof originalPrice === 'number') {
+                return originalPrice * (1 - DISCOUNT_RATE);
+            }
+            return originalPrice;
+        }
+
+        // --- Update Product Prices (Called on load and discount change) ---
+        function updateProductPrices() {
+            const discountActive = localStorage.getItem('crab_discount') === 'active';
+            const productsContainer = document.getElementById('products-view');
+            
+            // Product 1: The Human Cloning Machine (5000$)
+            const machineItem = productsContainer.querySelector('.product-item:nth-child(2)');
+            if (machineItem) {
+                const originalPrice = 5000;
+                const discountedPrice = calculateDiscountedPrice(originalPrice);
+                const priceStrong = machineItem.querySelector('strong');
+                
+                if (discountActive && typeof originalPrice === 'number') {
+                    priceStrong.innerHTML = `Price: <span style="text-decoration: line-through; color: #9999CC;">${formatPrice(originalPrice)}</span> ${formatPrice(discountedPrice)}`;
+                } else {
+                    priceStrong.textContent = `Price:${formatPrice(originalPrice)}`;
+                }
+            }
+            
+            // Product 3: The Die of Time (3.99$)
+            const timeDieItem = productsContainer.querySelector('.product-item:nth-child(4)');
+            if (timeDieItem) {
+                const originalPrice = 3.99;
+                const discountedPrice = calculateDiscountedPrice(originalPrice);
+                const priceStrong = timeDieItem.querySelector('strong');
+                
+                if (discountActive && typeof originalPrice === 'number') {
+                    priceStrong.innerHTML = `Price: <span style="text-decoration: line-through; color: #9999CC;">${formatPrice(originalPrice)}</span> ${formatPrice(discountedPrice)}`;
+                } else {
+                    priceStrong.textContent = `Price:${formatPrice(originalPrice)}`;
+                }
+            }
+        }
+
 
         // --- View Management ---
         function showView(viewId) {
+            // Check if terms are accepted before showing any view
+            if (localStorage.getItem('crab_terms_accepted') !== 'true' && viewId !== 'hero-view') {
+                showTermsModal();
+                return; 
+            }
+
             // Hide all feature views
             const views = ['hero-view', 'products-view', 'account-view', 'subscribe-view'];
             views.forEach(id => {
@@ -389,6 +611,10 @@
                 if (viewId === 'account-view') {
                     updateAccountInfo();
                 }
+                // Special update for Products view to ensure prices are current
+                if (viewId === 'products-view') {
+                     updateProductPrices();
+                }
             }
             // Clear status message when changing views
             document.getElementById('status-message').textContent = '';
@@ -398,9 +624,23 @@
         // --- Account Management (Local Storage) ---
         function updateAccountInfo() {
             const username = localStorage.getItem('crab_username');
+            const discountActive = localStorage.getItem('crab_discount') === 'active';
             const accountInfoDiv = document.getElementById('account-info');
             const createForm = document.getElementById('create-account-form');
             const subscriptionText = document.getElementById('subscription-status').textContent;
+            const discountStatusDiv = document.getElementById('discount-status'); 
+
+            // Update Discount Status Display
+            if (discountStatusDiv) {
+                if (discountActive) {
+                    discountStatusDiv.textContent = `Discount Status: Active (75% off with "${VALID_PROMO_CODE}") 🎉`;
+                    discountStatusDiv.style.color = '#FFD700';
+                } else {
+                    discountStatusDiv.textContent = 'Discount Status: None';
+                    discountStatusDiv.style.color = '#E0E0FF';
+                }
+            }
+
 
             if (username) {
                 accountInfoDiv.innerHTML = `
@@ -416,6 +656,36 @@
                 createForm.style.display = 'block';
             }
         }
+
+        // --- Promo Code Logic ---
+        function applyPromoCode() {
+            const input = document.getElementById('promo-code-input').value.trim();
+            const statusMessage = document.getElementById('status-message');
+            
+            if (input.toUpperCase() === VALID_PROMO_CODE.toUpperCase()) {
+                // Success: Activate the discount
+                localStorage.setItem('crab_discount', 'active');
+                statusMessage.style.backgroundColor = 'green';
+                statusMessage.textContent = `Code accepted! You now have a massive ${DISCOUNT_RATE * 100}% discount on all paid products!`;
+                
+                // Clear input
+                document.getElementById('promo-code-input').value = '';
+                
+                // Update UI
+                updateAccountInfo();
+                updateProductPrices();
+
+            } else if (input === '') {
+                statusMessage.style.backgroundColor = 'orange';
+                statusMessage.textContent = 'Please enter a promo code first.';
+            }
+            else {
+                // Failure
+                statusMessage.style.backgroundColor = 'red';
+                statusMessage.textContent = 'Invalid code. That teacher must not be cool enough.';
+            }
+        }
+
 
         function createAccount() {
             const usernameInput = document.getElementById('username').value.trim();
@@ -439,18 +709,20 @@
         }
 
         function deleteAccount() {
-            if (confirm('Are you sure you want to log out and clear your account data?')) {
+            if (confirm('Are you sure you want to log out and clear your account data? This will also remove your discount.')) {
                 localStorage.removeItem('crab_username');
                 localStorage.removeItem('crab_created');
                 localStorage.removeItem('crab_plus_sub');
+                localStorage.removeItem('crab_discount'); 
                 
                 const statusMessage = document.getElementById('status-message');
                 statusMessage.style.backgroundColor = 'blue';
                 statusMessage.textContent = 'You have been successfully logged out and data cleared.';
                 
-                // Refresh the account view and subscription status
+                // Refresh the view
                 updateAccountInfo();
                 updateSubscriptionStatus();
+                updateProductPrices(); 
             }
         }
 
